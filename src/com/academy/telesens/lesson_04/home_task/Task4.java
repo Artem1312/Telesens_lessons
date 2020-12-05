@@ -19,6 +19,14 @@ public class Task4 {
         String text = scanner.nextLine();
         System.out.println("Вы ввели строку: "+text);
 
+//        for(int i=0;i<text.length();i++){
+//            if(text.indexOf(i)>='0' || text.indexOf(i)<='9'){
+//                text.indexOf(i) ="";
+//            }
+//        }
 
+        //String text = "буквы,символы,цифры и тд и тп";
+        text = text.replaceAll("[^A-Za-zА-Яа-я]", "");
+        System.out.println(text);
     }
 }

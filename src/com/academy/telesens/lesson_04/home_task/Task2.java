@@ -9,8 +9,8 @@ public class Task2 {
 	- считывает строку
 	- выводит исходную строку
 	- выводит количество и список слов, которые заканчиваются буквами 'ED'
-
          */
+
         Scanner scanner= new Scanner(System.in);
         System.out.print("Введите строку: ");
         String text = scanner.nextLine();
