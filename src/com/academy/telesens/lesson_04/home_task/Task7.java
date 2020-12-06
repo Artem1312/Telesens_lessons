@@ -34,7 +34,7 @@ public class Task7 {
             }
         }
         //сравниваем
-        if(tempText.equals(tempRevers)){
+        if(tempText.equalsIgnoreCase(tempRevers)){
             System.out.println("Строка являеться палиндромом: ");
             System.out.println(revers);
         }else{
