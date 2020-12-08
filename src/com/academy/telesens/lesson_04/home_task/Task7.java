@@ -15,26 +15,35 @@ public class Task7 {
         String text = scanner.nextLine();
         System.out.println("Вы ввели строку: "+text);
 
+        String revers = reversString(text);
+        String tempText = preparingTemp(text);
+        String tempRevers = preparingTemp(revers);
+        stringСomparison(tempText, tempRevers, revers);
+    }
+
+    public static String reversString(String text) {
         //переворачиваем строку
         String revers = "";
         for(int i=text.length()-1;i>=0;i--){
             revers+=text.charAt(i);
         }
+        return revers;
+    }
+
+    public static String preparingTemp(String line) {
         //избавляемся от пробелов и прочих символов в строке
-        String tempText ="";
-        String tempRevers ="";
-        for(int j=0;j<text.length();j++){
-            if(text.charAt(j)!=' ' || text.charAt(j)!=',' || text.charAt(j)!='.'|| text.charAt(j)!='!' || text.charAt(j)!='?'){
-                tempText+=text.charAt(j);
+        String temp ="";
+        for(int j=0;j<line.length();j++){
+            if(line.charAt(j)!=' ' || line.charAt(j)!=',' || line.charAt(j)!='.'|| line.charAt(j)!='!' || line.charAt(j)!='?'){
+                temp+=line.charAt(j);
             }
         }
-        for(int k=0;k<revers.length();k++){
-            if(revers.charAt(k)!=' ' || revers.charAt(k)!=',' || revers.charAt(k)!='.'|| revers.charAt(k)!='!' || revers.charAt(k)!='?'){
-                tempRevers+=revers.charAt(k);
-            }
-        }
-        //сравниваем
-        if(tempText.equalsIgnoreCase(tempRevers)){
+        return temp;
+    }
+
+    public static void stringСomparison(String tempText, String tempRevers, String revers) {
+        //Проверяем и выводим результат
+        if (tempText.equalsIgnoreCase(tempRevers)){
             System.out.println("Строка являеться палиндромом: ");
             System.out.println(revers);
         }else{

@@ -12,7 +12,10 @@ public class Task6 {
         System.out.print("Введите строку: ");
         String text = scanner.nextLine();
         System.out.println("Вы ввели строку: "+text);
+        giveCountLtAndKrLetters(text);
+    }
 
+    public static void giveCountLtAndKrLetters(String text) {
         int count_KR = 0;
         int count_LT = 0;
 

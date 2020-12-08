@@ -16,6 +16,11 @@ public class Task3 {
 
         System.out.println("Вы ввели строку: "+ text);
         System.out.println("Вы ввели подстроку: "+ subText);
+
+        result(text, subText);
+    }
+
+    public static void result (String text, String subText) {
         String temp;
         int count = 0;
 

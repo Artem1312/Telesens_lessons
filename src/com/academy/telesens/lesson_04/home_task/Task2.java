@@ -5,17 +5,18 @@ import java.util.Scanner;
 public class Task2 {
     public static void main(String[] args) {
         /*
-        Напишите программу, которая:
-	- считывает строку
-	- выводит исходную строку
-	- выводит количество и список слов, которые заканчиваются буквами 'ED'
+        Напишите программу, которая: считывает строку, выводит исходную строку, выводит количество
+        и список слов, которые заканчиваются буквами 'ED'
          */
 
         Scanner scanner= new Scanner(System.in);
         System.out.print("Введите строку: ");
         String text = scanner.nextLine();
         System.out.println("Вы ввели следующюю строку: "+ text);
+        result(text);
+    }
 
+    public static void result (String text){
         int count = 0;
         String[] words = text.split(" "); //разбиваю строку обрзоввывая массив
         //System.out.println(Arrays.toString(words));

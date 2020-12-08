@@ -14,21 +14,20 @@ public class Task4 {
         System.out.print("Введите строку: ");
         String text = scanner.nextLine();
         System.out.println("Вы ввели строку: "+text);
+        result(text);
+    }
 
+    public static void result(String text) {
         String onlyText = "";
         String onlyNumbers = "";
         for(int i=0;i<text.length();i++){
             if(text.charAt(i)>='0'&& text.charAt(i)<='9'){
-               onlyNumbers+= text.charAt(i);
+                onlyNumbers+= text.charAt(i);
             }else{
-               onlyText+= text.charAt(i);
+                onlyText+= text.charAt(i);
             }
         }
         System.out.println("Преобразованная строка: "+ onlyText);
         System.out.println("Удаленные символы: "+ onlyNumbers);
-
-//        //String text = "буквы,символы,цифры и тд и тп";
-//        text = text.replaceAll("[^A-Za-zА-Яа-я]", "");
-//        System.out.println(text);
     }
 }
