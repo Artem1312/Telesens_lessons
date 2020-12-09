@@ -18,29 +18,31 @@ public class Task10 {
         //тестовая строка
         //String text = "Если возникли вопросы обращайтесь в службу поддержки support@gmail.com или central.office@mail.com";
 
-        //разбиваю строку обрзоввывая массив
-        String[] words = text.split(" ");
-        //System.out.println(Arrays.toString(words));   //проверка создания массива слов из строки
+        int count = count(text);
+        result(count, text);
+    }
 
-        //считаю сколько раз встречаеться @
+    public static Integer count(String text) {
         int count = 0;
         for(int m=0;m<text.length();m++){
             if(text.charAt(m)=='@'){
-                count+=1;
+                count+=1;                                 //считаю сколько раз встречаеться @
             }
         }
+        return count;
+    }
 
-        //создаю массив длиной count в котором сохраняю результат
+    public static void result(int count, String text) {
+        String[] words = text.split(" ");           //разбиваю строку обрзоввывая массив
         String[] result = new String[count];
         int t=0;
 
-        for(int i=0;i<words.length;i++){            //прохожусь по всем элементам массива
-            char temp[] = words[i].toCharArray();   //каждый элемент массива перобразовываю в массив temp
+        for(int i=0;i<words.length;i++){                  //прохожусь по всем элементам массива
+            char temp[] = words[i].toCharArray();         //каждый элемент массива перобразовываю в массив temp
             for(int j=0;j<temp.length;j++){
-                if(temp[j] == '@'){                 //внутри массива temp ищу @
-                //System.out.println(words[i]);
-                result[t] = words[i];               //в случае совпадения добавляю email в массив result
-                t++;
+                if(temp[j] == '@'){                       //внутри массива temp ищу @
+                    result[t] = words[i];                 //в случае совпадения добавляю email в массив result
+                    t++;                                  //
                 }
             }
         }
