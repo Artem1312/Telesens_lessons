@@ -65,7 +65,10 @@ public class CustomDate {
                 break;
         }
         String date;
-        date = ""+getDay()+"."+getMonth()+"."+getYear()+" "+nameOfDay;
+        //date = ""+getDay()+"."+getMonth()+"."+getYear()+" "+nameOfDay;
+        date = String.format("%02d.%02d.%04d %s",getDay(),getMonth(),getYear(),nameOfDay);
+
+        //System.out.println(String.format("%02d. %02d. %04d %s",getDay(),getMonth(),getYear(),nameOfDay));
         System.out.println(date);
         return date;
     }
