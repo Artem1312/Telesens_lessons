@@ -39,22 +39,39 @@ public class CustomDate {
     }
 
     public String getFormattedDate(){
-        /*
-        реализовть public метод getFormattedDate(); который вернет дату в отформатированном виде, напр. 21.12.2018
-        (или 21.12.2018 пятница)
 
-         */
+        String nameOfDay="";
+        switch (dayOfWeek(this.day,this.month,this.year)){
+            case 1:
+                nameOfDay = "Понедельник";
+                break;
+            case 2:
+                nameOfDay = "Вторник";
+                break;
+            case 3:
+                nameOfDay = "Среда";
+                break;
+            case 4:
+                nameOfDay = "Четверг";
+                break;
+            case 5:
+                nameOfDay = "Пятница";
+                break;
+            case 6:
+                nameOfDay = "Суббота";
+                break;
+            case 7:
+                nameOfDay = "Воскресенье";
+                break;
+        }
         String date;
-        date = ""+getDay()+"."+getMonth()+"."+getYear()+"";
+        date = ""+getDay()+"."+getMonth()+"."+getYear()+" "+nameOfDay;
         System.out.println(date);
         return date;
     }
 
     static boolean validate(int day, int month, int year){
-        /*
-реализовать статический метод validate(int day, int month, int year), который проверяет существование введенной даты
-		и выводит true/false (учитывать высокосный год)
-         */
+
         boolean result;
         boolean existDay;
         boolean existMonth;
@@ -78,12 +95,6 @@ public class CustomDate {
         } else existMonth = false;
 
         //существующий день
-        /*
-1 Январь    31              4 Апрель	  30      7 Июль        31      10 Октябрь     31
-2 Февраль	28 (29 висок.)  5 Май         31      8 Август      31      11 Ноябрь      30
-3 Март	    31              6 Июнь	      30      9 Сентябрь    30      12 Декабрь     31
-         */
-
         if((month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12)&&(day>0&&day<=31)){
             existDay = true;
         } else if((month==4 || month==6 || month==9 || month==11)&&(day>0&&day<=30)){
@@ -98,7 +109,7 @@ public class CustomDate {
             result = true;
         } else result = false;
 
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
 
@@ -110,7 +121,7 @@ public class CustomDate {
         boolean existMonth=true;
         boolean existYear = true;
 
-        if(day<0&&day<=31){
+        if(day>0&&day<=31){
             existDay=true;
         } else {
             existDay=false;
@@ -120,7 +131,7 @@ public class CustomDate {
             result = true;
         } else result = false;
 
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
 
@@ -140,13 +151,18 @@ public class CustomDate {
             result = true;
         } else result = false;
 
-        System.out.println(result);
+        //System.out.println(result);
         return result;
     }
 
-//    static int dayOfWeek(int day, int month, int year){
-//        int dayOfWeek; //понедельника - 0 вторника - 1 и т.д.
-//
-//        return dayOfWeek;
-//    }
+    static int dayOfWeek(int day, int month, int year){
+        //алгоритм https://unotices.com/page-answer.php?id=46039
+        int dayOfWeek; //понедельника - 0 вторника - 1 и т.д.
+        if(month<=2){
+            year=-1;
+            day+=3;
+        }
+        dayOfWeek = 1 + (day+year+(year/4)-(year/100)+(year/400)+(31*month + 10)/12)%7;
+        return dayOfWeek;
+    }
 }
