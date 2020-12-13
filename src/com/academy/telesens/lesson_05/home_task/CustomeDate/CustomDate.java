@@ -5,6 +5,13 @@ public class CustomDate {
     private int month;
     private int year;
 
+    public CustomDate(int year, int month, int day) {
+    }
+
+    public CustomDate() {
+
+    }
+
     public void setDay(int day) {
         if(validateDay(day)){
             this.day = day;
@@ -38,10 +45,10 @@ public class CustomDate {
         return year;
     }
 
-    public String getFormattedDate(){
-
+    public String nameOfDay(){
+        int number = dayOfWeek(this.day,this.month,this.year);
         String nameOfDay="";
-        switch (dayOfWeek(this.day,this.month,this.year)){
+        switch (number){
             case 1:
                 nameOfDay = "Понедельник";
                 break;
@@ -64,24 +71,22 @@ public class CustomDate {
                 nameOfDay = "Воскресенье";
                 break;
         }
+        return nameOfDay;
+    }
+
+    public String getFormattedDate(){
+
         String date;
         //date = ""+getDay()+"."+getMonth()+"."+getYear()+" "+nameOfDay;
-        date = String.format("%02d.%02d.%04d %s",getDay(),getMonth(),getYear(),nameOfDay);
-
+        date = String.format("%02d.%02d.%04d %s",getDay(),getMonth(),getYear(),nameOfDay());
         //System.out.println(String.format("%02d. %02d. %04d %s",getDay(),getMonth(),getYear(),nameOfDay));
         System.out.println(date);
         return date;
     }
 
-    static boolean validate(int day, int month, int year){
-
-        boolean result;
-        boolean existDay;
-        boolean existMonth;
-        boolean existYear = true;
-        boolean leapYear;
-
+    static boolean leapYear(int year){
         //проверка на высокосный год
+        boolean leapYear;
         if (year%400 == 0 ){
             leapYear = true;
         } else if (year%100 == 0){
@@ -91,6 +96,17 @@ public class CustomDate {
         } else {
             leapYear = false;
         }
+
+        return leapYear;
+    }
+
+    static boolean validate(int day, int month, int year){
+
+        boolean result;
+        boolean existDay;
+        boolean existMonth;
+        boolean existYear = true;
+        boolean leapYear = leapYear(year);
 
         //проверка что введен правильный месяц
         if(month>0 && month<13){
@@ -156,6 +172,38 @@ public class CustomDate {
 
         //System.out.println(result);
         return result;
+    }
+
+    public void nextDay(){
+        int temp = this.day;
+        temp++;
+        if(temp == 32 && (month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12)){
+            setDay(1);
+            //setMonth(getMonth()+1);
+            nextMonth();
+        } else if(temp == 31 && (month==4 || month==6 || month==9 || month==11)){
+            setDay(1);
+            nextMonth();
+        } else if(temp == 30 && month==2 && leapYear(this.year)==true){
+            setDay(1);
+            setMonth(3);
+        } else if (temp == 29 && month==2 && leapYear(this.year)==false){
+            setDay(1);
+            setMonth(3);
+        } else {setDay(temp);}
+    }
+
+    public void nextMonth(){
+        int temp = this.month;
+        temp++;
+        if(temp>12){
+            setMonth(1);
+            nextYear();
+        } else {setMonth(temp);}
+    }
+
+    public void nextYear(){
+        setYear(getYear()+1);
     }
 
     static int dayOfWeek(int day, int month, int year){

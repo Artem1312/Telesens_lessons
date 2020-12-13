@@ -1,6 +1,8 @@
 package com.academy.telesens.lesson_06.Operator;
 
-public class Subscriber  extends Person{
+import com.academy.telesens.lesson_05.Person.Person;
+
+public class Subscriber  extends Person {
     private String phoneNumber;
     private Operator operator;
 
