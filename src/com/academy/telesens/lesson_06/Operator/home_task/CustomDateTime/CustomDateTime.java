@@ -2,6 +2,7 @@ package com.academy.telesens.lesson_06.Operator.home_task.CustomDateTime;
 
 import com.academy.telesens.lesson_05.home_task.CustomeDate.CustomDate;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class CustomDateTime extends CustomDate {
     //поля
@@ -26,9 +27,14 @@ public class CustomDateTime extends CustomDate {
         this.second = second;
     }
 
-//    public CustomDateTime(CustomDateTime dateTime){
-//        //- CustomDateTime(CustomDateTime dateTime)копирования
-//    }
+    public CustomDateTime(CustomDateTime dateTime){ //- CustomDateTime(CustomDateTime dateTime)копирования
+        setYear(dateTime.getYear());
+        setMonth(dateTime.getMonth());
+        setDay(dateTime.getDay());
+        setHour(dateTime.getHour());
+        setMinute(dateTime.getMinute());
+        setSecond(dateTime.getSecond());
+    }
 
     //set/get
     public void setHour(int hour) {
@@ -56,7 +62,6 @@ public class CustomDateTime extends CustomDate {
     }
 
     public void setSecond(int second) {
-        this.second = second;
         if(validate(this.hour,this.minute,second)){
             this.second = second;
         } else {
@@ -103,8 +108,7 @@ public class CustomDateTime extends CustomDate {
         return date;
     }
 
-    /*Переопределить методы:toString // отображает дату и время 25.01.2017 15:05:35  */
-    @Override
+    @Override   /*Переопределить методы:toString // отображает дату и время 25.01.2017 15:05:35  */
     public String toString() {
         return "CustomDateTime{" +
                 "hour=" + hour +
@@ -128,10 +132,8 @@ public class CustomDateTime extends CustomDate {
     public int hashCode() {
         return Objects.hash(hour, minute, second);
     }
-/*
-		- использовать метод validate(...)
-			при попытке изменть инициализировать класс с помощью конструктора
- */
+
+    // использовать метод validate(...) при попытке изменть инициализировать класс с помощью конструктора
     static boolean validate (int hour, int minute, int second){
         boolean existHour;
         boolean existMinute;
@@ -176,47 +178,59 @@ public class CustomDateTime extends CustomDate {
         } else {setHour(temp);}
     }
 
-
-////-* реализовать метод addSeconds(int seconds), который добавляет указанное кол-во секунд к текущей дате
     public void addSeconds(int seconds){
-        int secondsInDayBefore = this.hour*3600+this.minute*60+this.second;
-        int temp = secondsInDayBefore + seconds;
-        // day = 86400 s
-        // hour = 3600 s
+        int secondsInDayBefore = this.hour*3600+this.minute*60+this.second; //текущее количество секунд
+        int temp = secondsInDayBefore + seconds;   //определяем на какое количество сек надо увеличить текущую дату от 0:00:00
+        // day = 86400 s // hour = 3600 s
 
         int tempS;
         int tempM;
         int tempH;
-        int countDay;
 
-        if (temp>=86400){ //когда указали количество секунд более чем в одном дне
-            //int tempDay = getDay();
-            countDay = temp/86400;
-            for(int i =0;i<countDay;i++){
+        if (temp>=86400){                           //когда указали количество секунд более чем в одном дне
+
+            for(int d=0; d<(temp/86400);d++){
                 nextDay();
             }
-            tempS = temp%86400;
-            setHour(tempS/3600);
-            setMinute(((temp-(tempS/3600)*3600))/60);
-            setSecond(((temp-(tempS/3600)*3600))%60);
-        } else if(temp<86400 && temp >= 3600){ // количество сек больше чем в 1 часу но меньше чем в 1 сутках
+            tempH = (temp%86400)/3600;
+            setHour(tempH);
+            tempM = ((temp%86400)/3600)/60;
+            setMinute(tempM);
+            setSecond(temp%60);
+
+        } else if(temp<86400 && temp > 3599){       // количество сек больше чем в 1 часу но меньше чем в 1 сутках
             tempH = temp/3600;
-            for(int j =0;j<tempH;j++){
-                nextHour();
-            }
-            tempS = temp%3600;
-            //setHour(tempS/3600);
-            setMinute(((temp-(tempS/3600)*3600))/60);
-            setSecond(((temp-(tempS/3600)*3600))%60);
-        } else if (temp<3600 && temp >=60){
-            tempM = temp/60;
-            for(int k=0;k<tempM;k++){
-                nextMinute();
-            }
-            tempS = temp%60;
-            setSecond(tempS);
-        } else {
+            setHour(tempH);
+            tempS = temp%3600;                      // остаток секунд меньше одного часа
+            setMinute(tempS/60);
+            setSecond(temp%60);
+        } else if (temp<3600 && temp >=60){         //количество секунд от 60 до 1 часа
+            setMinute(temp/60);
+            setSecond(temp%60);
+        } else {                                    //меньше 60 сек
             setSecond(temp);
+        }
+    }
+
+    public void checkTime(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите время в формате чч:мм:сс ");
+        String userTime = scanner.nextLine();
+
+        String[] arr = userTime.split("\\D+");
+        int[] time = new int[3];
+        for(int i=0;i<3;i++){
+            time[i] = Integer.parseInt(arr[i]);
+        }
+
+        int hour = time[0];
+        int minute = time[1];
+        int second = time[2];
+
+        if(validate(hour,minute,second)){
+            System.out.println("Вы ввели действительное время");
+        } else {
+            System.out.println("Вы ввели не действительное время");
         }
     }
 }

@@ -1,9 +1,13 @@
 package com.academy.telesens.lesson_05.home_task.CustomeDate;
 
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
 public class CustomDate {
-    private int day;
-    private int month;
-    private int year;
+    private int day = 1;
+    private int month = 1;
+    private int year = 2000;
 
     public CustomDate(int year, int month, int day) {
     }
@@ -13,7 +17,7 @@ public class CustomDate {
     }
 
     public void setDay(int day) {
-        if(validateDay(day)){
+        if(validate(day,this.month, this.year)){
             this.day = day;
         } else {
             System.out.println("Вы ввели несуществующий день месяца");
@@ -22,7 +26,7 @@ public class CustomDate {
 
     public void setMonth(int month) {
 
-        if(validateMonth(month)){
+        if(validate(this.day,month,this.year)){
             this.month = month;
         } else {
             System.out.println("Вы ввели несуществующий месяц");
@@ -132,8 +136,8 @@ public class CustomDate {
         return result;
     }
 
-    //(для проверки дня, считаем что дней не может быть более 31)
-    static boolean validateDay(int day){
+
+    static boolean validateDay(int day){  //(для проверки дня, считаем что дней не может быть более 31)
 
         boolean result;
         boolean existDay;
@@ -215,5 +219,27 @@ public class CustomDate {
         }
         dayOfWeek = 1 + (day+year+(year/4)-(year/100)+(year/400)+(31*month + 10)/12)%7;
         return dayOfWeek;
+    }
+
+    public void checkData(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите дату в формате дд:мм:гггг ");
+        String userDate = scanner.nextLine();
+
+        String[] arr = userDate.split("\\D+");
+        int[] date = new int[3];
+        for(int i=0;i<3;i++){
+            date[i] = Integer.parseInt(arr[i]);
+        }
+
+        int day = date[0];
+        int month = date[1];
+        int year = date[2];
+
+        if(validate(day,month,year)){
+            System.out.println("Вы ввели действительную дату");
+        } else {
+            System.out.println("Вы ввели не действительную дату");
+        }
     }
 }
