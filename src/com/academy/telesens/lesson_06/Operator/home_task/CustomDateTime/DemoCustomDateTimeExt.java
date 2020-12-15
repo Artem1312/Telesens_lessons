@@ -1,5 +1,7 @@
 package com.academy.telesens.lesson_06.Operator.home_task.CustomDateTime;
 
+import com.academy.telesens.lesson_05.home_task.CustomeDate.CustomDate;
+
 public class DemoCustomDateTimeExt {
     public static void main(String[] args) {
         //конструкторы
@@ -7,10 +9,15 @@ public class DemoCustomDateTimeExt {
         CustomDateTimeExt customDateTimeExt1 = new CustomDateTimeExt(2020, 12, 15, 15, 45, 25, 899);
         //customDateTimeExt1.getFormattedDate();
         CustomDateTimeExt customDateTimeExt2 = new CustomDateTimeExt(customDateTimeExt1 );
+        CustomDateTime customDateTime = new CustomDateTime(2020, 12, 12, 15, 15, 15);
+        CustomDateTime customDateTime1 = new CustomDateTime(customDateTime);
+
 
         customDateTimeExt.getFormattedDate();
         customDateTimeExt.setMs(123);
         customDateTimeExt.getFormattedDate();
+        customDateTime.getFormattedDate();
+        System.out.println(customDateTime.equals(customDateTime1));
         //- метод toString()
         System.out.println("****Проверки****");
         customDateTimeExt.getFormattedDate();
@@ -33,6 +40,9 @@ public class DemoCustomDateTimeExt {
         customDateTimeExt1.getFormattedDate();
         customDateTimeExt1.nextYear();
         customDateTimeExt1.getFormattedDate();
+
+        customDateTime.setHour(25);
+        customDateTime.getFormattedDate();
 
         customDateTimeExt.checkData();
         customDateTimeExt.checkTime();

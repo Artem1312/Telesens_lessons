@@ -21,13 +21,16 @@ public class CustomDateTime extends CustomDate {
                           int hour,
                           int minute,
                           int second) {
-        super(year,month,day);
+        super.setYear(year);
+        super.setMonth(month);
+        super.setDay(day);
         this.hour = hour;
         this.minute = minute;
         this.second = second;
     }
 
     public CustomDateTime(CustomDateTime dateTime){ //- CustomDateTime(CustomDateTime dateTime)копирования
+
         setYear(dateTime.getYear());
         setMonth(dateTime.getMonth());
         setDay(dateTime.getDay());
@@ -42,6 +45,7 @@ public class CustomDateTime extends CustomDate {
             this.hour = hour;
         } else {
             System.out.println("Вы ввели неккоректно количество часов");
+            this.hour = 0;
         }
     }
 
@@ -54,6 +58,7 @@ public class CustomDateTime extends CustomDate {
             this.minute = minute;
         } else {
             System.out.println("Вы ввели неккоректно количество минут");
+            this.minute = 0;
         }
     }
 
@@ -66,6 +71,7 @@ public class CustomDateTime extends CustomDate {
             this.second = second;
         } else {
             System.out.println("Вы ввели неккоректно количество секунд");
+            this.second = 0;
         }
     }
 

@@ -26,6 +26,11 @@ public class CustomDateTimeExt extends CustomDateTime{
 
     public CustomDateTimeExt(CustomDateTimeExt customDateTimeExt) {
         //CustomDateTimeExt(CustomDateTimeExt customDateTimeExt)копирования
+        /*
+        1) Т.н конструктор копирования, позволяющий создать копию класса
+    (в нашем случае CustomDateTime):CustomDateTime(CustomDateTime dateTime)
+    { this.hour = dateTime.hour; this.minute = dateTime.minutes; ...}
+         */
         setYear(customDateTimeExt.getYear());
         setMonth(customDateTimeExt.getMonth());
         setDay(customDateTimeExt.getDay());
@@ -77,4 +82,14 @@ public class CustomDateTimeExt extends CustomDateTime{
         System.out.println(date);
         return date;
     }
+    /*
+    1) Т.н конструктор копирования, позволяющий создать копию класса
+    (в нашем случае CustomDateTime):CustomDateTime(CustomDateTime dateTime)
+    { this.hour = dateTime.hour; this.minute = dateTime.minutes; ...}
+    2) Перед инициализации полей this.hour = hour; ...
+     вначале проверить поля методом validate(). Если поля не валидны,
+     то инициализировать значением по умолчанию
+     */
+
+
 }
