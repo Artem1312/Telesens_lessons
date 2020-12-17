@@ -1,4 +1,4 @@
-package com.academy.telesens.lesson_06.Operator.home_task.CustomDateTime;
+package com.academy.telesens.lesson_06.home_task.CustomDateTime;
 
 import com.academy.telesens.lesson_05.home_task.CustomeDate.CustomDate;
 import java.util.Objects;

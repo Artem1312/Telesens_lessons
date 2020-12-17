@@ -1,4 +1,4 @@
-package com.academy.telesens.lesson_06.Operator.home_task.CustomDateTime;
+package com.academy.telesens.lesson_06.home_task.CustomDateTime;
 
 public class Demo3 {
     public static void main(String[] args) {
