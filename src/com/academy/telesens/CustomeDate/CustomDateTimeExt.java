@@ -1,8 +1,8 @@
-package com.academy.telesens.lesson_06.home_task.CustomDateTime;
+package com.academy.telesens.CustomeDate;
 
 import java.util.Objects;
 
-public class CustomDateTimeExt extends CustomDateTime{
+public class CustomDateTimeExt extends CustomDateTime {
     //Поля
     private int ms = 0;
 

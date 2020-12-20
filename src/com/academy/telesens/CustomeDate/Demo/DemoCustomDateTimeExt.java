@@ -1,4 +1,7 @@
-package com.academy.telesens.lesson_06.home_task.CustomDateTime;
+package com.academy.telesens.CustomeDate.Demo;
+
+import com.academy.telesens.CustomeDate.CustomDateTime;
+import com.academy.telesens.CustomeDate.CustomDateTimeExt;
 
 public class DemoCustomDateTimeExt {
     public static void main(String[] args) {

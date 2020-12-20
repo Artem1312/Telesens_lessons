@@ -1,6 +1,7 @@
-package com.academy.telesens.lesson_05.home_task.CustomeDate;
+package com.academy.telesens.CustomeDate.Demo;
 
-import java.util.Arrays;
+import com.academy.telesens.CustomeDate.CustomDate;
+
 import java.util.Random;
 
 public class Demo2CustomDate {

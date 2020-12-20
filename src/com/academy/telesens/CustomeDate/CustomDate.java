@@ -1,13 +1,13 @@
-package com.academy.telesens.lesson_05.home_task.CustomeDate;
+package com.academy.telesens.CustomeDate;
 
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class CustomDate {
     private int day = 1;
     private int month = 1;
     private int year = 2000;
+    public DateFormat format;
+    public NameOfMonth namMonth;
 
     public CustomDate(int year, int month, int day) {
     }
@@ -79,11 +79,33 @@ public class CustomDate {
     }
 
     public String getFormattedDate(){
+        DateFormat dateFormat = DateFormat.RU;
 
+        String formatDate;
+        String date2;
         String date;
         //date = ""+getDay()+"."+getMonth()+"."+getYear()+" "+nameOfDay;
-        date = String.format("%02d.%02d.%04d %s",getDay(),getMonth(),getYear(),nameOfDay());
+        //date = String.format("%02d.%02d.%04d %s",getDay(),getMonth(),getYear(),nameOfDay());
+        formatDate = dateFormat.format(getDay(),getMonth(),getYear());
+        String dayOfWeek = String.format("%s",nameOfDay());
+        date = formatDate + " "+dayOfWeek;
         //System.out.println(String.format("%02d. %02d. %04d %s",getDay(),getMonth(),getYear(),nameOfDay));
+        System.out.println(date);
+        return date;
+    }
+
+    public String getFormattedDate(DateFormat format){
+
+        String date;
+        String formatDate;
+
+//        date = ""+getDay()+"."+getMonth()+"."+getYear()+" "+nameOfDay;
+//        date = String.format("%02d.%02d.%04d %s",getDay(),getMonth(),getYear(),nameOfDay());
+//        System.out.println(String.format("%02d. %02d. %04d %s",getDay(),getMonth(),getYear(),nameOfDay));
+
+        formatDate = format.format(getDay(),getMonth(),getYear());
+        String dayOfWeek = String.format("%s",nameOfDay());
+        date = formatDate + " "+dayOfWeek;
         System.out.println(date);
         return date;
     }

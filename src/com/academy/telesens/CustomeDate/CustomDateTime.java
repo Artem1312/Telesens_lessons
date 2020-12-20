@@ -1,14 +1,17 @@
-package com.academy.telesens.lesson_06.home_task.CustomDateTime;
+package com.academy.telesens.CustomeDate;
 
-import com.academy.telesens.lesson_05.home_task.CustomeDate.CustomDate;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class CustomDateTime extends CustomDate {
+    public final int DEFAULT_SECOND = 0;
     //поля
     private int hour = 0;
     private int minute = 0;
     private int second = 0;
+    public DateFormat format;
+    //public TimeFormat format;
+
     public boolean isTimeFormat12;
 
     //конструкторы
@@ -112,6 +115,20 @@ public class CustomDateTime extends CustomDate {
 
         System.out.println(date);
         return date;
+    }
+
+    public String getFormattedDate(DateFormat dateFormat, TimeFormat timeFormat) {
+        String date;
+        String time;
+        String formattedDate;
+
+        date = dateFormat.format(getDay(),getMonth(),getYear()) + " " + String.format("%s",nameOfDay());
+        time = timeFormat.format(getHour(), getMinute(),getSecond());
+        formattedDate = date + " " + time;
+
+        System.out.println(formattedDate);
+
+        return formattedDate;
     }
 
     @Override   /*Переопределить методы:toString // отображает дату и время 25.01.2017 15:05:35  */
@@ -239,4 +256,5 @@ public class CustomDateTime extends CustomDate {
             System.out.println("Вы ввели не действительное время");
         }
     }
+
 }
