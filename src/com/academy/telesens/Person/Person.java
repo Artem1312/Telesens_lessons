@@ -1,8 +1,9 @@
-package com.academy.telesens.lesson_05.Person;
+package com.academy.telesens.Person;
 
 import java.util.Objects;
 
 public class Person {
+    //Gender gender = new Gender();
     protected String firstName;
     protected String lastName;
     protected int age;

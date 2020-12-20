@@ -1,9 +1,9 @@
 package com.academy.telesens.lesson_07;
 
-import com.academy.telesens.lesson_05.Person.Person;
-import com.academy.telesens.lesson_06.Operator.Operator;
-import com.academy.telesens.lesson_06.Operator.Subscriber;
-import com.academy.telesens.lesson_06.home_task.CustomDateTime.CustomDateTime;
+import com.academy.telesens.Person.Person;
+import com.academy.telesens.Operator.Operator;
+import com.academy.telesens.Operator.Subscriber;
+import com.academy.telesens.CustomeDate.CustomDateTime;
 
 import java.util.Arrays;
 

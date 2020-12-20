@@ -1,7 +1,5 @@
 package com.academy.telesens.component;
 
-import com.academy.telesens.lesson_08.VisualComponent;
-
 abstract class Component implements VisualComponent {
     protected int xPosition = 0;
     protected int yPosition = 0;
@@ -21,6 +19,12 @@ abstract class Component implements VisualComponent {
 //    public void draw(){
 //        System.out.println("Component");
 //    }
+
+
+    @Override
+    public void draw3D() {
+
+    }
 
     abstract public void setxPosition();
     abstract public void setyPosition();

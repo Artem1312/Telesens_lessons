@@ -1,4 +1,6 @@
-package com.academy.telesens.lesson_05.Person;
+package com.academy.telesens.Person.Demo;
+
+import com.academy.telesens.Person.Person;
 
 public class DemoPerson {
     public static void main(String[] args) {

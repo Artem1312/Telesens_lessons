@@ -9,6 +9,11 @@ public class Button extends Component{
         super(text);
     }
 
+    @Override
+    public void draw3D() {
+        //super.draw3D();
+        System.out.println("Button: draw3D");
+    }
 
     @Override
     public void draw() {

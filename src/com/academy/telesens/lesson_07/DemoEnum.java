@@ -1,5 +1,7 @@
 package com.academy.telesens.lesson_07;
 
+import com.academy.telesens.Person.Gender;
+
 import java.util.Arrays;
 
 public class DemoEnum {

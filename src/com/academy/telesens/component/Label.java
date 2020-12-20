@@ -16,6 +16,12 @@ public class Label extends Component {
         info();
     }
 
+    @Override
+    public void draw3D() {
+        //super.draw3D();
+        System.out.println("Label: draw3D");
+    }
+
     public void info(){
         gettext();
         getxPosition();

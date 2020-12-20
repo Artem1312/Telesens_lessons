@@ -29,5 +29,10 @@ public class Demo {
                 arr[j].draw();
             }
         }
+
+        label.draw3D();
+        button.draw3D();
+        checkBox.draw3D();
+        roundButton.draw3D();
     }
 }

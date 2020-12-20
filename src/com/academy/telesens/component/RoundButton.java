@@ -17,6 +17,12 @@ public class RoundButton extends Button{
     }
 
     @Override
+    public void draw3D() {
+        //super.draw3D();
+        System.out.println("RoundButton: draw3D");
+    }
+
+    @Override
     public void setxPosition() {
         super.setxPosition();
     }

@@ -25,6 +25,12 @@ public class CheckBox extends Button{
     }
 
     @Override
+    public void draw3D() {
+        //super.draw3D();
+        System.out.println("CheckBox: draw3D");
+    }
+
+    @Override
     public void setxPosition() {
         super.setxPosition();
     }

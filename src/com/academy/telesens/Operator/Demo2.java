@@ -1,4 +1,4 @@
-package com.academy.telesens.lesson_06.Operator;
+package com.academy.telesens.Operator;
 
 public class Demo2 {
     public static void main(String[] args) {

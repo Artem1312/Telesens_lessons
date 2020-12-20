@@ -1,4 +1,4 @@
-package com.academy.telesens.lesson_07;
+package com.academy.telesens.Person;
 
 public enum Gender {
     MALE("Мужчина"),  //0
