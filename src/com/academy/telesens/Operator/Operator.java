@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Operator {
     //поля
-    private String name;
-    private String address;
+    private String name = "Vodafon";
+    private String address = "Kiev";
 
     //конструкторы
     //признаки конструуктора: название класа должно совпадать с методом и нет возвращаемого значения

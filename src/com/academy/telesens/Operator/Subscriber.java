@@ -3,8 +3,12 @@ package com.academy.telesens.Operator;
 import com.academy.telesens.Person.Person;
 
 public class Subscriber  extends Person {
-    private String phoneNumber;
+    private String phoneNumber = null;
     private Operator operator;
+    private String firstName;
+    private String lastName;
+    private char gender = 'm';
+    private int age = 20;
 
     //констркутор
     public Subscriber(){
@@ -41,6 +45,44 @@ public class Subscriber  extends Person {
         return operator;
     }
 
+    @Override
+    public String getFirstName() {
+        return firstName;
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    @Override
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     //метод with (для красоты)
     public Subscriber withFirstName(String firstName){
@@ -60,8 +102,10 @@ public class Subscriber  extends Person {
 
     @Override
     public String getProfile(){
-        //return String.format("Имя: %s, Фамилия: %s Возраст: %d Пол: %s номер %s оператор %s", firstName,lastName, age, gender,phoneNumber, operator.getName());
-        return super.getProfile() + String.format(" PhoneNumber: %s\n Operator: %s\n",phoneNumber, operator.getName());
+        String info = String.format("Имя: %s, Фамилия: %s Возраст: %d Пол: %s номер %s", firstName,lastName, age, gender,phoneNumber);
+        System.out.println(info);
+        return String.format("Имя: %s, Фамилия: %s Возраст: %d Пол: %s номер %s", firstName,lastName, age, gender,phoneNumber); //, operator.getName());
+        //return (super.getProfile() + String.format(" PhoneNumber: %s\n Operator: %s\n",phoneNumber, operator.getName()));
     }
 
     @Override

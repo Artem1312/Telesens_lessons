@@ -14,7 +14,6 @@ public class Demo {
         Choreograph choreograph = new Choreograph();
         Genious genious = new Genious();
 
-        //Person[] group = { boxer, programmer, tester, choreograph, genious};
 
         Person[] group = new Person[20];
         Person obj = null;
@@ -42,7 +41,6 @@ public class Demo {
             group[j] = obj;
         }
 
-        int countPerson = 0;
         int countBoxer = 0;
         int countProgrammer = 0;
         int countTester = 0;
@@ -56,6 +54,7 @@ public class Demo {
             else if(group[i] instanceof Choreograph){countChoreograph++;}
             else if(group[i] instanceof Genious){countGenious++;}
         }
+
         System.out.println("Количество Boxer: "+countBoxer);
         System.out.println("Количество Programmer: "+countProgrammer);
         System.out.println("Количество Tester: "+countTester);
