@@ -1,7 +1,5 @@
 package com.academy.telesens.lesson_08.home_task;
-
-public interface ReturnNum {
-
+@FunctionalInterface
+interface ReturnNum {
     boolean result(int num);
-
 }
