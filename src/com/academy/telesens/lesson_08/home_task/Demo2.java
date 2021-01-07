@@ -8,7 +8,7 @@ public class Demo2 {
         System.out.print("Введите число: ");
         int num = scanner.nextInt();
 
-        Factorial factorial = (number) -> {
+        Factorial factorial = number -> {
             int sum = 1;
             for(int i=num;i>0;i--){
                 sum *= i;

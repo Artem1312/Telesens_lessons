@@ -10,12 +10,10 @@ public class Demo1 {
         System.out.print("Введите число: ");
         int num = scanner.nextInt();
 
-        ReturnNum rtNum = (number) -> {
-            boolean result;
-            if(num>= 10 && num<= 20){
-                result = true;
-            } else result = false;
-            return result;
+        ReturnNum rtNum = number -> {
+            if(num>= 10 && num<= 20) {
+                return true;
+            } return false;
         };
         System.out.println(rtNum.result(num));
     }

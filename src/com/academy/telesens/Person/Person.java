@@ -48,9 +48,18 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age) throws  InvalidAge{
+        if(age<=0)
+            throw new InvalidAge();
         this.age = age;
     }
+
+
+//    public static int invalidAge(int age) throws InvalidAge{
+//        if(age<=0)
+//            throw new InvalidAge();
+//        return age;
+//    }
 
     public void setGender(char gender) {
         this.gender = gender;

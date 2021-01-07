@@ -18,14 +18,13 @@ public class Demo3 implements getUpperString{
           System.out.print("Введите строку: ");
           String userInput = scanner.nextLine();
 
-
-
-          getUpperString reversString = (str) -> {
-              String result = "";
-              result =str.toUpperCase();
-              return result;
-          };
+          getUpperString reversString = str -> str.toUpperCase();
           System.out.println(reversString.result(userInput));
+
+          //getUpperString reversString1 = String::toUpperCase();
+          //System.out.println(reversString1.result(userInput));
+
+
 
           //Consumer<String> consumer = str -> System.out.println(str);
           //Consumer<String> consumer = System.out::println;
