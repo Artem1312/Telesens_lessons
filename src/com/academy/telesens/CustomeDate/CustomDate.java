@@ -1,5 +1,10 @@
 package com.academy.telesens.CustomeDate;
 
+import com.academy.telesens.lesson_09.home_task.IllegalDateException;
+import com.academy.telesens.lesson_09.home_task.IsZeroDayException;
+import com.academy.telesens.lesson_09.home_task.NegativeValueDayException;
+
+
 import java.util.Scanner;
 
 public class CustomDate {
@@ -8,32 +13,76 @@ public class CustomDate {
     private int year = 2000;
     public DateFormat format;
     public NameOfMonth namMonth;
-
+    /*
+    b) Модифицировать класс CustomDate, добавив в конструктор
+		выбрасывания исключения IllegalDateException при
+		попытки создать некорректную (не существующую дату)
+     */
     public CustomDate(int year, int month, int day) {
+        //this.year = year;
+        //this.month = month;
+        //this.day = day;
+
+        try {
+            setYear(year);
+        } catch (IllegalDateException exc){
+            System.err.println("Вы ввели неправильный год");
+        } catch (Exception e) {
+            System.err.println("Unknown error");
+        }
+
+        try {
+            setMonth(month);
+        } catch (IllegalDateException exc){
+            System.err.println("Вы ввели несуществующий месяц");
+        } catch (Exception e) {
+            System.err.println("Unknown error");
+        }
+
+        try {
+            setDay(day);
+        } catch (NegativeValueDayException nd) {
+            System.err.println("Не существует день с отрицательным значением");
+        } catch (IsZeroDayException zd) {
+            System.err.println("Не существует нулевой день");
+        } catch (IllegalDateException exc) {
+            System.err.println("Вы ввели несуществующий день месяца");
+        } catch (Exception e) {
+            System.err.println("Unknown error");
+        }
     }
 
     public CustomDate() {
 
     }
 
-    public void setDay(int day) {
-        if(validate(day,this.month, this.year)){
+    public void setDay(int day) throws RuntimeException {
+        if (0 > day) {
+            throw new NegativeValueDayException();
+        } else if (day==0) {
+            throw new IsZeroDayException();
+        }
+        else if (!validate(day,this.month, this.year)) {
+            throw new IllegalDateException();
+        }
+        else{
             this.day = day;
-        } else {
-            System.out.println("Вы ввели несуществующий день месяца");
         }
     }
 
-    public void setMonth(int month) {
+    public void setMonth(int month) throws IllegalDateException{
 
-        if(validate(this.day,month,this.year)){
+        if(!validate(this.day,month,this.year)){
+            throw new IllegalDateException();
+        } else {
             this.month = month;
-        } else {
-            System.out.println("Вы ввели несуществующий месяц");
         }
+
     }
 
-    public void setYear(int year) {
+    public void setYear(int year) throws IllegalDateException{
+        if(year < 0)
+            throw new IllegalDateException();
         this.year = year;
     }
 

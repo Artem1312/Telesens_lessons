@@ -1,5 +1,7 @@
 package com.academy.telesens.CustomeDate;
 
+import com.academy.telesens.lesson_09.home_task.*;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -16,6 +18,45 @@ public class CustomDateTime extends CustomDate {
 
     //конструкторы
     public CustomDateTime() {
+    }
+
+    public CustomDateTime(int hour, int minute, int second) {
+
+        try {
+            setHour(hour);
+        } catch (NegativeValueForTime nv){
+            System.err.println("Вы ввели отрицательное значение для параметр ЧАСЫ");
+        } catch (GrateValueForHour gh) {
+            System.err.println("Вы ввели большое значение для часов");
+        } catch (IllegalTimeException exc) {
+            System.err.println("Ошибка ввода времени");
+        } catch (Exception e) {
+            System.err.println("Unknown error");
+        }
+
+        try {
+            setMinute(minute);
+        } catch (NegativeValueForTime nv){
+            System.err.println("Вы ввели отрицательное значение для параметр МИНУТЫ");
+        } catch (GrateValueForMinute gm){
+            System.err.println("Вы ввели большое значение для минут");
+        } catch (IllegalTimeException exc) {
+            System.err.println("Ошибка ввода времени");
+        } catch (Exception e) {
+            System.err.println("Unknown error");
+        }
+
+        try {
+            setSecond(second);
+        } catch (NegativeValueForTime nv){
+            System.err.println("Вы ввели отрицательное значение для параметр СЕКУНДЫ");
+        } catch (GrateValueForSecond gs){
+            System.err.println("Вы ввели большое значение для секунд");
+        } catch (IllegalTimeException exc) {
+            System.err.println("Ошибка ввода времени");
+        } catch (Exception e) {
+            System.err.println("Unknown error");
+        }
     }
 
     public CustomDateTime(int year,
@@ -43,12 +84,16 @@ public class CustomDateTime extends CustomDate {
     }
 
     //set/get
-    public void setHour(int hour) {
-        if(validate(hour,this.minute,this.second)){
-            this.hour = hour;
+    public void setHour(int hour) throws IllegalTimeException {
+
+        if (hour<0) {
+            throw new NegativeValueForTime();
+        } else if (hour>=24) {
+            throw new GrateValueForHour();
+        } else if(!validate(hour,this.minute,this.second)){
+            throw new IllegalTimeException();
         } else {
-            System.out.println("Вы ввели неккоректно количество часов");
-            this.hour = 0;
+            this.hour = hour;
         }
     }
 
@@ -56,12 +101,16 @@ public class CustomDateTime extends CustomDate {
         return hour;
     }
 
-    public void setMinute(int minute) {
-        if(validate(this.hour,minute,this.second)){
-            this.minute = minute;
+    public void setMinute(int minute) throws IllegalTimeException{
+
+        if (minute<0) {
+            throw new NegativeValueForTime();
+        } else if (minute>=60) {
+            throw new GrateValueForMinute();
+        } else if(!validate(this.hour,minute,this.second)){
+            throw new IllegalTimeException();
         } else {
-            System.out.println("Вы ввели неккоректно количество минут");
-            this.minute = 0;
+            this.minute = minute;
         }
     }
 
@@ -69,12 +118,16 @@ public class CustomDateTime extends CustomDate {
         return minute;
     }
 
-    public void setSecond(int second) {
-        if(validate(this.hour,this.minute,second)){
-            this.second = second;
+    public void setSecond(int second) throws IllegalTimeException{
+
+        if (second<0) {
+            throw new NegativeValueForTime();
+        } else if (second>=60) {
+            throw new GrateValueForSecond();
+        } else if(!validate(this.hour,this.minute,second)){
+            throw new IllegalTimeException();
         } else {
-            System.out.println("Вы ввели неккоректно количество секунд");
-            this.second = 0;
+            this.second = second;
         }
     }
 
