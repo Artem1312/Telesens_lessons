@@ -1,8 +1,8 @@
-package com.academy.telesens.lesson10;
+package com.academy.telesens.lesson10.generic;
 
 import java.lang.reflect.Field;
 
-public class Pair {
+public class Pair <U,V>{
 //    Pair first;
 //    Pair second;
 //
@@ -26,26 +26,26 @@ public class Pair {
 //        this.first = first;
 //        this.second = second;
 //    }
-    private Object first;
-    private Object second;
+    private U first;
+    private V second;
 
-    public Object getFirst() {
+    public U getFirst() {
         return first;
     }
 
-    public void setFirst(int first) {
+    public void setFirst(U first) {
         this.first = first;
     }
 
-    public Object getSecond() {
+    public V getSecond() {
         return second;
     }
 
-    public void setSecond(String second) {
+    public void setSecond(V second) {
         this.second = second;
     }
 
-    public Pair(Object first, Object second) {
+    public Pair(U first, V second) {
         this.first = first;
         this.second = second;
     }
