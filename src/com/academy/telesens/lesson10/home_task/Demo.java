@@ -41,11 +41,17 @@ public class Demo {
 
         Collections.reverse(list);
         System.out.println(list);
+        list.sort((s1,s2)->s2.compareTo(s1));
+        System.out.println(list);
 
         //list.stream().map(String::toUpperCase).peek(String::toUpperCase).peek(System.out::println).collect(Collectors.toList());
         //System.out.println(list);
 
         System.out.println(list.contains("Andry"));
 
+
+
+        //
+        //List<String> names = new ArrayList<>(Arrays.asList())
     }
 }
